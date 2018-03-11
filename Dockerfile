@@ -34,7 +34,10 @@ RUN \
 	unrar \
 	unzip \
 	wget \
+	jq \
+	git\
 	zip && \
+
  echo "**** install webui ****" && \
  mkdir -p \
 	/usr/share/webapps/rutorrent \
@@ -57,7 +60,9 @@ RUN \
  echo "**** cleanup ****" && \
  rm -rf \
 	/etc/nginx/conf.d/default.conf \
-	/tmp/*
+	/tmp/* \
+	/var/cache/apk/* && \
+ git -C /config/scripts clone -q https://github.com/clinton-hall/nzbToMedia.git
 
 # add local files
 COPY root/ /
